@@ -7,7 +7,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Task {
-    private static final Pattern CRONTAB_TASK_PATTERN = Pattern.compile("\\s*([0-9*/]+)\\s+([0-9*/]+)\\s+([0-9*/]+)\\s+([0-9*/]+)\\s+([0-9*/]+)\\s+(.+)");
+    private static final Pattern CRONTAB_TASK_PATTERN = Pattern.compile("\\s*([0-9*/\\-,]+)\\s+([0-9*/\\-,]+)\\s+([0-9*/\\-,]+)\\s+([0-9*/\\-,]+)\\s+([0-9*/\\-,]+)\\s+(.+)");
     private static final int GROUP_MINUTE = 1;
     private static final int GROUP_HOUR = 2;
     private static final int GROUP_DAY = 3;
