@@ -14,14 +14,21 @@ public class TriggerEntryParser {
             }
             return new ArrayTriggerEntry(entries);
         } else {
+
             if (StringUtils.contains(value, '/')) {
                 String[] split = StringUtils.split(value, "/", 2);
-                return new ModTriggerEntry(parse(split[0], min, max), parseInt(split[1], min, max));
+                TriggerEntry parent = parse(split[0], min, max);
+                if (!(parent instanceof RangeTriggerEntry)) {
+                    throw new IllegalArgumentException("Step can be applied only for * or range");
+                }
+
+                RangeTriggerEntry range = (RangeTriggerEntry) parent;
+                return new StepTriggerEntry(range, parseInt(split[1], min, max));
             } else if (StringUtils.contains(value, '-')) {
                 String[] split = StringUtils.split(value, "-", 2);
                 return new RangeTriggerEntry(parseInt(split[0], min, max), parseInt(split[1], min, max));
             } else if (StringUtils.equals(value, "*")) {
-                return new AnyTriggerEntry();
+                return new AnyTriggerEntry(min, max);
             } else {
                 return new FixedTriggerEntry(parseInt(value, min, max));
             }

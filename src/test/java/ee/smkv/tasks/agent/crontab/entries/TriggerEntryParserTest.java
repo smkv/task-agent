@@ -13,6 +13,6 @@ public class TriggerEntryParserTest {
         assertEquals("1", parser.parse("1", 0, 10).toString());
         assertEquals("*/2", parser.parse("*/2", 0, 10).toString());
         assertEquals("1-10/2", parser.parse("1-10/2", 0, 10).toString());
-        assertEquals("1,10/2", parser.parse("1,10/2", 0, 10).toString());
+        assertEquals("1,*/2", parser.parse("1,*/2", 0, 10).toString());
     }
 }

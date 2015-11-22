@@ -9,6 +9,14 @@ public class RangeTriggerEntry implements TriggerEntry {
         this.max = max;
     }
 
+    public int getMin() {
+        return min;
+    }
+
+    public int getMax() {
+        return max;
+    }
+
     @Override
     public boolean accept(int number) {
         return number >= min && number <= max;

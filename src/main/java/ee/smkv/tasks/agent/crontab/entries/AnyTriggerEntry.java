@@ -1,11 +1,11 @@
 package ee.smkv.tasks.agent.crontab.entries;
 
-public class AnyTriggerEntry implements TriggerEntry {
+public class AnyTriggerEntry extends RangeTriggerEntry {
 
-    @Override
-    public boolean accept(int number) {
-        return true;
+    public AnyTriggerEntry(int min, int max) {
+        super(min , max);
     }
+
 
     public String toString(){
         return "*";
