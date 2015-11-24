@@ -1,5 +1,9 @@
 package ee.smkv.tasks.agent.crontab;
 
+import ee.smkv.tasks.agent.crontab.entries.Months;
+import ee.smkv.tasks.agent.crontab.entries.WeekDays;
+import org.apache.commons.lang3.StringUtils;
+
 import java.text.ParseException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -7,8 +11,8 @@ import java.util.regex.Pattern;
 public class CronLineParser {
 
     private static final String TRIGGER_ENTRY_PATTERN = "([0-9*/\\-,]+)";
-    private static final String MONTH_TRIGGER_ENTRY_PATTERN = "([0-9*/\\-,]+|JAN|FEB|MAR|APR|MAY|JUN|LUL|AUG|SEP|OCT|NOV|DEC)";
-    private static final String WEEK_TRIGGER_ENTRY_PATTERN = "([0-9*/\\-,]+|MON|TUE|WED|THU|FRI|SAT|SUN)";
+    private static final String MONTH_TRIGGER_ENTRY_PATTERN = String.format("([0-9*/\\-,]+|%s)", StringUtils.join(Months.values(), '|'));
+    private static final String WEEK_TRIGGER_ENTRY_PATTERN = String.format("([0-9*/\\-,]+|%s)", StringUtils.join(WeekDays.values(), '|'));
     private static final String COMMAND_PATTERN = "(.+)";
 
     private static final Pattern CRONTAB_TASK_PATTERN = Pattern.compile(

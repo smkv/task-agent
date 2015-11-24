@@ -1,8 +1,10 @@
 package ee.smkv.tasks.agent.crontab;
 
 
+import ee.smkv.tasks.agent.crontab.entries.Months;
 import ee.smkv.tasks.agent.crontab.entries.TriggerEntry;
 import ee.smkv.tasks.agent.crontab.entries.TriggerEntryParser;
+import ee.smkv.tasks.agent.crontab.entries.WeekDays;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -23,8 +25,8 @@ public class Trigger {
         this.minutes = parser.parse(minutes, 0, 59);
         this.hours = parser.parse(hours, 0, 23);
         this.days = parser.parse(days, 1, 31);
-        this.months = parser.parse(months, 1, 12);
-        this.weeks = parser.parse(weeks, 0, 7);
+        this.months = parser.parse(months, 1, 12, Months.values());
+        this.weeks = parser.parse(weeks, 0, 7, WeekDays.values());
     }
 
     public boolean accept(Date date) {
