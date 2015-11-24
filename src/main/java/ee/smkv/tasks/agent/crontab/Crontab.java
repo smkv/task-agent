@@ -16,14 +16,15 @@ public class Crontab {
     }
 
     public List<Task> getTasks() throws IOException, ParseException {
+        CronLineParser parser = new CronLineParser();
         String content = getContent();
         StringTokenizer tokenizer = new StringTokenizer(content,"\n");
 
         ArrayList<Task> tasks = new ArrayList<>();
         while (tokenizer.hasMoreTokens()) {
             String line = tokenizer.nextToken();
-            if (Task.isTask(line)) {
-                tasks.add(Task.parse(line));
+            if (parser.isTask(line)) {
+                tasks.add(parser.parse(line));
             }
         }
         return tasks;

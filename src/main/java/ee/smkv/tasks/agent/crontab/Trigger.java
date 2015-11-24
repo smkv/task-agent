@@ -6,6 +6,8 @@ import ee.smkv.tasks.agent.crontab.entries.TriggerEntryParser;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Trigger {
     private TriggerEntry minutes;
@@ -13,6 +15,8 @@ public class Trigger {
     private TriggerEntry days;
     private TriggerEntry months;
     private TriggerEntry weeks;
+
+
 
     public Trigger(String minutes, String hours, String days, String months, String weeks) {
         TriggerEntryParser parser = new TriggerEntryParser();
